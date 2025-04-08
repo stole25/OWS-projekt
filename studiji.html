@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="hr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>VSITE - Studij</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Pozadinska animacija -->
+    <canvas id="tech-animation"></canvas>
+    <div id="page-container">
+      <header>
+        <div class="logo">VSiTe</div>
+        <nav>
+          <ul class="nav-links">
+            <li><a href="index.html">Početna</a></li>
+            <li><a href="o-nama.html">O nama</a></li>
+            <li><a href="studiji.html" class="active">Studij</a></li>
+            <li><a href="predmeti.html">Predmeti</a></li>
+            <li><a href="kontakt.html">Kontakt</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <!-- Glavni sadržaj -->
+      <div id="content-wrap">
+        <main id="studij">
+          <div class="content-box">
+            <h1>Studijski programi</h1>
+            <p>Naša škola nudi širok spektar studijskih programa:</p>
+
+            <!-- Dropdown za odabir studija -->
+            <div class="dropdown">
+              <button class="dropbtn" onclick="toggleDropdown()">Odaberi studij</button>
+              <div id="studijDropdown" class="dropdown-content">
+                <a href="#prediplomski">Prediplomski studij</a>
+                <a href="#diplomski">Diplomski studij</a>
+              </div>
+            </div>
+
+            <!-- Informacije o prediplomskom studiju -->
+            <section id="prediplomski">
+              <h2>Prediplomski studij</h2>
+              <p>Prediplomski studij pruža osnovna znanja iz područja informacijske tehnologije. Smjerovi uključuju:</p>
+              <ul>
+                <li>Računalne znanosti</li>
+                <li>Softversko inženjerstvo</li>
+                <li>Mrežne tehnologije</li>
+              </ul>
+            </section>
+
+            <!-- Informacije o diplomskom studiju -->
+            <section id="diplomski">
+              <h2>Diplomski studij</h2>
+              <p>Diplomski studij omogućuje specijalizaciju u sljedećim područjima:</p>
+              <ul>
+                <li>Cyber sigurnost</li>
+                <li>Napredne baze podataka</li>
+                <li>Razvoj mobilnih aplikacija</li>
+              </ul>
+            </section>
+
+          </div>
+        </main>
+      </div>
+
+      <!-- Footer -->
+      <footer>
+        <p>&copy; 2025 VSiTe. Sva prava pridržana.</p>
+      </footer>
+    </div>
+
+    <!-- Skripta -->
+    <script src="script.js"></script>
+  </body>
+</html>

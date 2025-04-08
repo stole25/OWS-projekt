@@ -1,0 +1,219 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Puna visina za html i body */
+html,
+body {
+  height: 100%;
+}
+
+/* Kontejner cijele stranice – omogućuje da footer ostane na dnu */
+#page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Omotač za glavni sadržaj: centriranje sadržaja horizontalno i vertikalno */
+#content-wrap {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Osnovni stilovi */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #222;
+  color: #ccc;
+  overflow-x: hidden;
+}
+
+/* Canvas – pozadinska animacija */
+#tech-animation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+/* Header */
+header {
+  background-color: #111;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 24px;
+  color: #fff;
+}
+
+.nav-links {
+  list-style: none;
+}
+
+.nav-links li {
+  display: inline;
+  margin-right: 15px;
+}
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.nav-links a.active {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+/* Content box (glavni tekst) */
+.content-box {
+  background-color: #333;
+  padding: 40px;
+  border-radius: 8px;
+  color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  max-width: 800px;
+  width: 100%;
+}
+
+/* Stilizacija naslova i teksta u content-boxu */
+.content-box h1 {
+  margin-bottom: 20px;
+  font-size: 2.5rem;
+}
+
+.content-box h2 {
+  margin-bottom: 20px;
+  font-size: 1.75rem;
+}
+
+.content-box p,
+.content-box ul {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+/* Lista u content-boxu */
+.content-box ul {
+  list-style: disc;
+  padding-left: 20px;
+  text-align: left;
+}
+
+/* Footer */
+footer {
+  background-color: #111;
+  color: #fff;
+  text-align: center;
+  padding: 15px;
+}
+
+/* Dropdown (Studij stranica) */
+.dropdown {
+  position: relative;
+  display: inline-block;
+  margin-top: 20px;
+}
+
+.dropbtn {
+  background-color: #32CD32;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #444;
+  min-width: 160px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: #fff;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #555;
+}
+
+.dropdown-content.show {
+  display: block;
+}
+
+/* Stilovi za kontakt formu (ako je primjenjivo) */
+#contact form {
+  text-align: left;
+}
+
+#contact label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: #fff;
+}
+
+#contact input[type="text"],
+#contact input[type="email"],
+#contact textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+#contact button[type="submit"] {
+  background-color: #32CD32;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#contact button[type="submit"]:hover {
+  background-color: #28a428;
+}
+
+.nav-links a {
+  transition: color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #32CD32;  /* zelena boja */
+  transform: scale(1.05);
+}
+
+.nav-links a:active {
+  transform: scale(0.95);
+  box-shadow: inset 0px 2px 5px rgba(0, 0, 0, 0.3);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
