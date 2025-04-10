@@ -27,7 +27,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
 }
 
 #tech-animation {
@@ -148,9 +147,14 @@ header {
   border-radius: 8px;
   color: #fff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  align-self: center;
   text-align: center;
   max-width: 800px;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 40px 20px;
 }
 
 /* Unutar content-boxa */
@@ -160,8 +164,14 @@ header {
 }
 
 .content-box h2 {
-  margin-bottom: 20px;
+  margin-top: 20px;
+  margin-bottom: 10px;
   font-size: 1.75rem;
+}
+
+.content-box h3 {
+  margin-top: 20px;
+  font-size: 1.3rem;
 }
 
 .content-box p,
@@ -171,7 +181,7 @@ header {
   margin-bottom: 20px;
 }
 
-/* Studiji sekcija */
+/* Studiji gumbi */
 .study-buttons {
   margin: 20px 0;
   text-align: center;
@@ -198,28 +208,24 @@ header {
   background-color: #32CD32;
 }
 
-.study-details {
+/* STUDIJI - content scrollable i centriran */
+#study-content {
   max-height: 300px;
   overflow-y: auto;
   padding: 20px;
-  margin: 20px auto 0 auto;
-  background-color: #333;
-  border-radius: 10px;
-  color: #fff;
-  animation: fadeIn 0.3s ease-in;
-  text-align: center;
   width: 100%;
   max-width: 600px;
+  text-align: center;
+  margin: 0 auto;
 }
 
-.study-details ul {
+#study-content ul {
   list-style: none;
-  padding: 0;
-  margin: 10px 0;
+  padding-left: 0;
 }
 
-.study-details li {
-  margin: 5px 0;
+#study-content li {
+  margin: 6px 0;
 }
 
 /* Forma - kontakt */
@@ -267,6 +273,11 @@ header {
 }
 
 /* Predmeti hover i klik efekt */
+#predmeti ul {
+  list-style: none;
+  padding-left: 0;
+}
+
 #predmeti ul li {
   transition: color 0.3s ease;
 }
@@ -276,6 +287,7 @@ header {
   cursor: pointer;
 }
 
+/* Detalji predmeta */
 .details {
   animation: fadeIn 0.4s ease-in-out;
   background-color: #333;
@@ -303,25 +315,4 @@ footer {
   color: #fff;
   text-align: center;
   padding: 15px;
-}
-
-/* STUDIJI – content centriran i scrollable */
-.study-details {
-  max-height: 400px;
-  overflow-y: auto;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #333;
-  border-radius: 10px;
-  color: #fff;
-  animation: fadeIn 0.3s ease-in;
-  text-align: center;
-  width: 90%;
-  max-width: 600px;
-}
-
-/* PREDMETI – ukloni točkice */
-#predmeti ul {
-  list-style: none;
-  padding-left: 0;
 }

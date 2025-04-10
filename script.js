@@ -6,9 +6,11 @@ function resizeCanvas() {
   canvas.height = window.innerHeight;
 }
 
-// Animirane linije
+// Klasa za animirane linije
 class Line {
-  constructor() { this.reset(); }
+  constructor() {
+    this.reset();
+  }
   reset() {
     this.x = Math.random() * canvas.width;
     this.y = Math.random() * canvas.height;
@@ -21,14 +23,19 @@ class Line {
   update() {
     this.x += Math.cos(this.angle) * this.speed;
     this.y += Math.sin(this.angle) * this.speed;
-    if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) this.reset();
+    if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) {
+      this.reset();
+    }
   }
   draw(ctx) {
     ctx.strokeStyle = "#32CD32";
     ctx.lineWidth = this.thickness;
     ctx.beginPath();
     ctx.moveTo(this.x, this.y);
-    ctx.lineTo(this.x + Math.cos(this.angle) * this.length, this.y + Math.sin(this.angle) * this.length);
+    ctx.lineTo(
+      this.x + Math.cos(this.angle) * this.length,
+      this.y + Math.sin(this.angle) * this.length
+    );
     ctx.stroke();
   }
 }
@@ -39,7 +46,9 @@ let lines = [];
 
 function initLines() {
   lines = [];
-  for (let i = 0; i < 50; i++) lines.push(new Line());
+  for (let i = 0; i < 50; i++) {
+    lines.push(new Line());
+  }
 }
 
 function animateLines() {
@@ -69,7 +78,7 @@ if (hamburger && navLinks) {
   });
 }
 
-// STUDIJI – prikaz sadržaja na klik
+// STUDIJI – prikaz direktno u .content-box
 const preddiplomskiBtn = document.getElementById("preddiplomski-btn");
 const diplomskiBtn = document.getElementById("diplomski-btn");
 const studyContent = document.getElementById("study-content");
@@ -93,6 +102,7 @@ if (preddiplomskiBtn && diplomskiBtn && studyContent) {
       <li>Uvod u mreže</li>
     </ul>
   `;
+
   const diplomskiHTML = `
     <h2>Stručni diplomski studij informacijskih tehnologija</h2>
     <p>Traje 2 godine (4 semestra), 120 ECTS. Završetkom se stječe naziv mag.ing.inf.tech.</p>
@@ -110,6 +120,8 @@ if (preddiplomskiBtn && diplomskiBtn && studyContent) {
       <li>Diplomski rad</li>
     </ul>
   `;
+
+  // Default - učitaj preddiplomski
   studyContent.innerHTML = preddipHTML;
 
   preddiplomskiBtn.addEventListener("click", () => {
@@ -125,7 +137,7 @@ if (preddiplomskiBtn && diplomskiBtn && studyContent) {
   });
 }
 
-// PREDMETI – klik otvara detalje s animacijom
+// PREDMETI – klik za prikaz detalja
 document.querySelectorAll('#predmeti ul li').forEach(li => {
   li.style.cursor = 'pointer';
   li.addEventListener('click', () => {
