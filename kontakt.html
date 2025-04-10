@@ -1,49 +1,59 @@
 <!DOCTYPE html>
 <html lang="hr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>VSITE - Kontakt</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <!-- Pozadinska animacija -->
-    <canvas id="tech-animation"></canvas>
-    <div id="page-container">
-      <header>
-        <div class="logo">VSiTe</div>
-        <nav>
-          <ul class="nav-links">
-            <li><a href="index.html">Početna</a></li>
-            <li><a href="o-nama.html">O nama</a></li>
-            <li><a href="studiji.html">Studij</a></li>
-            <li><a href="predmeti.html">Predmeti</a></li>
-            <li><a href="kontakt.html" class="active">Kontakt</a></li>
-          </ul>
-        </nav>
-      </header>
-      <div id="content-wrap">
-        <main id="contact">
-          <div class="content-box">
-            <h1>Kontaktirajte nas</h1>
-            <form action="#" method="POST">
-              <label for="ime">Ime:</label>
-              <input type="text" id="ime" name="ime" placeholder="Unesite vaše ime" />
-              <label for="prezime">Prezime:</label>
-              <input type="text" id="prezime" name="prezime" placeholder="Unesite vaše prezime" />
-              <label for="email">Email:</label>
-              <input type="email" id="email" name="email" placeholder="Unesite vaš email" />
-              <label for="poruka">Poruka:</label>
-              <textarea id="poruka" name="poruka" placeholder="Unesite vašu poruku"></textarea>
-              <button type="submit">Pošalji</button>
-            </form>
-          </div>
-        </main>
-      </div>
-      <footer>
-        <p>&copy; 2025 VSiTe. Sva prava pridržana.</p>
-      </footer>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>VSITE - Kontakt</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <canvas id="tech-animation"></canvas>
+  <div id="page-container">
+    <header>
+      <div class="logo">VSiTe</div>
+      <button class="hamburger" aria-label="Otvori navigaciju">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">Početna</a></li>
+          <li><a href="o-nama.html">O nama</a></li>
+          <li><a href="studiji.html">Studij</a></li>
+          <li><a href="predmeti.html">Predmeti</a></li>
+          <li><a href="kontakt.html" class="active">Kontakt</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div id="content-wrap">
+      <main id="contact">
+        <div class="content-box">
+          <h1>Kontaktirajte nas</h1>
+          <form action="#" method="POST" class="contact-form">
+            <label for="ime">Ime:</label>
+            <input type="text" id="ime" name="ime" placeholder="Unesite vaše ime" required />
+
+            <label for="prezime">Prezime:</label>
+            <input type="text" id="prezime" name="prezime" placeholder="Unesite vaše prezime" required />
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Unesite vaš email" required />
+
+            <label for="poruka">Poruka:</label>
+            <textarea id="poruka" name="poruka" placeholder="Unesite vašu poruku" required></textarea>
+
+            <button type="submit">Pošalji</button>
+          </form>
+        </div>
+      </main>
     </div>
-    <script src="script.js"></script>
-  </body>
+
+    <footer>
+      <p>&copy; 2025 VSiTe. Sva prava pridržana.</p>
+    </footer>
+  </div>
+  <script src="script.js"></script>
+</body>
 </html>

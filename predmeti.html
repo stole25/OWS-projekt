@@ -1,53 +1,60 @@
 <!DOCTYPE html>
 <html lang="hr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>VSITE - Predmeti</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <!-- Pozadinska animacija -->
-    <canvas id="tech-animation"></canvas>
-    <div id="page-container">
-      <header>
-        <div class="logo">VSiTe</div>
-        <nav>
-          <ul class="nav-links">
-            <li><a href="index.html">Početna</a></li>
-            <li><a href="o-nama.html">O nama</a></li>
-            <li><a href="studiji.html">Studij</a></li>
-            <li><a href="predmeti.html" class="active">Predmeti</a></li>
-            <li><a href="kontakt.html">Kontakt</a></li>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>VSITE - Predmeti</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <canvas id="tech-animation"></canvas>
+  <div id="page-container">
+    <header>
+      <div class="logo">VSiTe</div>
+      <button class="hamburger" aria-label="Otvori navigaciju">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">Početna</a></li>
+          <li><a href="o-nama.html">O nama</a></li>
+          <li><a href="studiji.html">Studij</a></li>
+          <li><a href="predmeti.html" class="active">Predmeti</a></li>
+          <li><a href="kontakt.html">Kontakt</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div id="content-wrap">
+      <main id="predmeti">
+        <div class="content-box">
+          <h1>Predmeti</h1>
+          <p>
+            Naši predmeti pokrivaju širok spektar znanja u području informatike i tehnologije. U sklopu studija, studenti će se upoznati s temama poput:
+          </p>
+          <ul>
+            <li>Osnove programiranja</li>
+            <li>Objektno orijentirano programiranje</li>
+            <li>Baze podataka i SQL</li>
+            <li>Web programiranje</li>
+            <li>Mrežne tehnologije</li>
+            <li>Razvoj mobilnih aplikacija</li>
+            <li>Upravljanje IT projektima</li>
+            <li>Računalna sigurnost</li>
+            <li>Napredni SQL</li>
+            <li>Operacijski sustavi</li>
           </ul>
-        </nav>
-      </header>
-      <div id="content-wrap">
-        <main id="predmeti">
-          <div class="content-box">
-            <h1>Predmeti</h1>
-            <p>
-              Naši predmeti pokrivaju širok spektar znanja u području informatike i tehnologije. U sklopu studija, studenti će se upoznati s temama poput:
-            </p>
-            <ul>
-              <li>Osnove programiranja</li>
-              <li>Objektno orijentirano programiranje</li>
-              <li>Baze podataka i SQL</li>
-              <li>Web programiranje</li>
-              <li>Mrežne tehnologije</li>
-              <li>Razvoj mobilnih aplikacija</li>
-              <li>Upravljanje IT projektima</li>
-            </ul>
-            <p>
-              Svaki predmet je osmišljen tako da pruži čvrste teoretske osnove i praktične vještine, pripremajući studente za izazove suvremenog tržišta rada.
-            </p>
-          </div>
-        </main>
-      </div>
-      <footer>
-        <p>&copy; 2025 VSiTe. Sva prava pridržana.</p>
-      </footer>
+          <p>Kliknite na predmet za više informacija.</p>
+        </div>
+      </main>
     </div>
-    <script src="script.js"></script>
-  </body>
+
+    <footer>
+      <p>&copy; 2025 VSiTe. Sva prava pridržana.</p>
+    </footer>
+  </div>
+  <script src="script.js"></script>
+</body>
 </html>

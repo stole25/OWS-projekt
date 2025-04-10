@@ -1,15 +1,14 @@
 // Funkcija za postavljanje veličine canvasa
 function resizeCanvas() {
   const canvas = document.getElementById("tech-animation");
+  if (!canvas) return;
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
 }
 
-// Klasa za animirane linije
+// Animirane linije
 class Line {
-  constructor() {
-    this.reset();
-  }
+  constructor() { this.reset(); }
   reset() {
     this.x = Math.random() * canvas.width;
     this.y = Math.random() * canvas.height;
@@ -22,36 +21,29 @@ class Line {
   update() {
     this.x += Math.cos(this.angle) * this.speed;
     this.y += Math.sin(this.angle) * this.speed;
-    if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) {
-      this.reset();
-    }
+    if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) this.reset();
   }
   draw(ctx) {
     ctx.strokeStyle = "#32CD32";
     ctx.lineWidth = this.thickness;
     ctx.beginPath();
     ctx.moveTo(this.x, this.y);
-    ctx.lineTo(
-      this.x + Math.cos(this.angle) * this.length,
-      this.y + Math.sin(this.angle) * this.length
-    );
+    ctx.lineTo(this.x + Math.cos(this.angle) * this.length, this.y + Math.sin(this.angle) * this.length);
     ctx.stroke();
   }
 }
 
 const canvas = document.getElementById("tech-animation");
-const ctx = canvas.getContext("2d");
+const ctx = canvas ? canvas.getContext("2d") : null;
 let lines = [];
 
 function initLines() {
   lines = [];
-  const numLines = 50;
-  for (let i = 0; i < numLines; i++) {
-    lines.push(new Line());
-  }
+  for (let i = 0; i < 50; i++) lines.push(new Line());
 }
 
 function animateLines() {
+  if (!ctx) return;
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   lines.forEach((line) => {
     line.update();
@@ -60,7 +52,6 @@ function animateLines() {
   requestAnimationFrame(animateLines);
 }
 
-// Inicijalizacija animacije i prilagodba pri promjeni veličine prozora
 resizeCanvas();
 initLines();
 animateLines();
@@ -69,22 +60,110 @@ window.addEventListener("resize", () => {
   initLines();
 });
 
-// Dropdown funkcionalnost za Studij stranicu
-function toggleDropdown() {
-  const dropdown = document.getElementById("studijDropdown");
-  if (dropdown) {
-    dropdown.classList.toggle("show");
-  }
+// Hamburger meni
+const hamburger = document.querySelector(".hamburger");
+const navLinks = document.querySelector(".nav-links");
+if (hamburger && navLinks) {
+  hamburger.addEventListener("click", () => {
+    navLinks.classList.toggle("active");
+  });
 }
 
-window.onclick = function (event) {
-  if (!event.target.matches(".dropbtn")) {
-    const dropdowns = document.getElementsByClassName("dropdown-content");
-    for (let i = 0; i < dropdowns.length; i++) {
-      const openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains("show")) {
-        openDropdown.classList.remove("show");
-      }
+// STUDIJI – prikaz sadržaja na klik
+const preddiplomskiBtn = document.getElementById("preddiplomski-btn");
+const diplomskiBtn = document.getElementById("diplomski-btn");
+const studyContent = document.getElementById("study-content");
+
+if (preddiplomskiBtn && diplomskiBtn && studyContent) {
+  const preddipHTML = `
+    <h2>Preddiplomski stručni studij informacijskih tehnologija</h2>
+    <p>Traje 3 godine (6 semestara), 180 ECTS. Završetkom se stječe naziv bacc.ing.techn.inf.</p>
+    <h3>Smjerovi:</h3>
+    <ul>
+      <li>Programiranje</li>
+      <li>Računalni sustavi i mreže</li>
+      <li>Baze podataka i web dizajn</li>
+      <li>Informacijski sustavi</li>
+    </ul>
+    <h3>Primjeri kolegija:</h3>
+    <ul>
+      <li>Osnove programiranja</li>
+      <li>Web programiranje</li>
+      <li>Baze podataka</li>
+      <li>Uvod u mreže</li>
+    </ul>
+  `;
+  const diplomskiHTML = `
+    <h2>Stručni diplomski studij informacijskih tehnologija</h2>
+    <p>Traje 2 godine (4 semestra), 120 ECTS. Završetkom se stječe naziv mag.ing.inf.tech.</p>
+    <h3>Smjerovi:</h3>
+    <ul>
+      <li>Programsko inženjerstvo i informacijski sustavi</li>
+      <li>Računalni sustavi</li>
+      <li>Ugradbena i prijenosna računala</li>
+    </ul>
+    <h3>Primjeri kolegija:</h3>
+    <ul>
+      <li>Računalna sigurnost</li>
+      <li>Napredne baze podataka</li>
+      <li>Distribuirani sustavi</li>
+      <li>Diplomski rad</li>
+    </ul>
+  `;
+  studyContent.innerHTML = preddipHTML;
+
+  preddiplomskiBtn.addEventListener("click", () => {
+    studyContent.innerHTML = preddipHTML;
+    preddiplomskiBtn.classList.add("active");
+    diplomskiBtn.classList.remove("active");
+  });
+
+  diplomskiBtn.addEventListener("click", () => {
+    studyContent.innerHTML = diplomskiHTML;
+    diplomskiBtn.classList.add("active");
+    preddiplomskiBtn.classList.remove("active");
+  });
+}
+
+// PREDMETI – klik otvara detalje s animacijom
+document.querySelectorAll('#predmeti ul li').forEach(li => {
+  li.style.cursor = 'pointer';
+  li.addEventListener('click', () => {
+    const existing = li.querySelector('.details');
+    if (existing) {
+      existing.remove();
+    } else {
+      const details = document.createElement('div');
+      details.className = 'details';
+      details.innerHTML = getDetailsFor(li.textContent.trim());
+      li.appendChild(details);
     }
+  });
+});
+
+function getDetailsFor(subject) {
+  switch (subject) {
+    case 'Osnove programiranja':
+      return 'Uvod u algoritme, petlje, uvjeti, varijable.';
+    case 'Objektno orijentirano programiranje':
+      return 'Klase, objekti, nasljeđivanje, polimorfizam.';
+    case 'Baze podataka i SQL':
+      return 'Relacijski modeli, SELECT upiti, normalizacija.';
+    case 'Web programiranje':
+      return 'HTML, CSS, JS, responzivni dizajn, DOM manipulacija.';
+    case 'Mrežne tehnologije':
+      return 'TCP/IP, OSI, rutanje, sigurnost, IPv6.';
+    case 'Razvoj mobilnih aplikacija':
+      return 'Android i iOS razvoj, Swift, Kotlin, mobilni UI dizajn.';
+    case 'Upravljanje IT projektima':
+      return 'Scrum, Agile, vođenje tima, budžetiranje.';
+    case 'Računalna sigurnost':
+      return 'Kriptografija, autentifikacija, sigurnost mreže.';
+    case 'Napredni SQL':
+      return 'Stored procedures, funkcije, transakcije, indeksiranje.';
+    case 'Operacijski sustavi':
+      return 'Procesi, dretve, memorija, fajl sistemi, kernel.';
+    default:
+      return 'Detalji uskoro dostupni.';
   }
-};
+}
