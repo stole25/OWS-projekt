@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="hr">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Studiji - VSITE</title>
@@ -13,9 +12,7 @@
     <nav class="navbar">
       <div class="logo">VSITE</div>
       <button class="hamburger" aria-label="Otvori navigaciju">
-        <span></span>
-        <span></span>
-        <span></span>
+        <span></span><span></span><span></span>
       </button>
       <ul class="nav-links">
         <li><a href="index.html">Početna</a></li>
@@ -26,25 +23,16 @@
       </ul>
     </nav>
 
-    <main class="content-box">
+      <div class="content-box">
         <h1>Studiji na VSITE-u</h1>
-        <p>VSITE nudi preddiplomski i diplomski stručni studij informacijskih tehnologija prilagođen suvremenim tržišnim potrebama. U nastavku možete odabrati studij i pregledati njegove smjerove i osnovne informacije.</p>
-        
-        <div class="study-buttons">
-          <button id="preddiplomski-btn" class="active">Preddiplomski studij</button>
-          <button id="diplomski-btn">Diplomski studij</button>
-        </div>
-        
-        <div id="study-content" class="study-details">
-          <!-- JS ubacuje sadržaj ovdje -->
-        </div>
-    </main>
+        <button id="toggle-studij-btn">Preddiplomski / Diplomski studij</button>
+        <div id="study-content" class="fade-box"></div>
+      </div>
 
     <footer>
       <p>&copy; 2025 VSiTe. Sva prava pridržana.</p>
     </footer>
   </div>
-
   <script src="script.js"></script>
 </body>
 </html>

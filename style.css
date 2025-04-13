@@ -317,3 +317,30 @@ footer {
   text-align: center;
   padding: 15px;
 }
+
+#toggle-studij-btn {
+  background-color: #32CD32;
+  color: white;
+  padding: 10px 30px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+#toggle-studij-btn:hover {
+  background-color: #28a428;
+}
+
+/* Fade animacija za studij sadržaj */
+.fade-box {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.fade-box.visible {
+  opacity: 1;
+}

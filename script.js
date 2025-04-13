@@ -78,66 +78,67 @@ if (hamburger && navLinks) {
   });
 }
 
-// STUDIJI – prikaz direktno u .content-box
-const preddiplomskiBtn = document.getElementById("preddiplomski-btn");
-const diplomskiBtn = document.getElementById("diplomski-btn");
+// STUDIJI – jedan gumb + animacija fade između studija
+const toggleBtn = document.getElementById("toggle-studij-btn");
 const studyContent = document.getElementById("study-content");
 
-if (preddiplomskiBtn && diplomskiBtn && studyContent) {
-  const preddipHTML = `
-    <h2>Preddiplomski stručni studij informacijskih tehnologija</h2>
-    <p>Traje 3 godine (6 semestara), 180 ECTS. Završetkom se stječe naziv bacc.ing.techn.inf.</p>
-    <h3>Smjerovi:</h3>
-    <ul>
-      <li>Programiranje</li>
-      <li>Računalni sustavi i mreže</li>
-      <li>Baze podataka i web dizajn</li>
-      <li>Informacijski sustavi</li>
-    </ul>
-    <h3>Primjeri kolegija:</h3>
-    <ul>
-      <li>Osnove programiranja</li>
-      <li>Web programiranje</li>
-      <li>Baze podataka</li>
-      <li>Uvod u mreže</li>
-    </ul>
-  `;
+const preddipHTML = `
+  <h2>Preddiplomski stručni studij informacijskih tehnologija</h2>
+  <p>Traje 3 godine (6 semestara), 180 ECTS. Završetkom se stječe naziv bacc.ing.techn.inf.</p>
+  <h3>Smjerovi:</h3>
+  <ul>
+    <li>Programiranje</li>
+    <li>Računalni sustavi i mreže</li>
+    <li>Baze podataka i web dizajn</li>
+    <li>Informacijski sustavi</li>
+  </ul>
+  <h3>Primjeri kolegija:</h3>
+  <ul>
+    <li>Osnove programiranja</li>
+    <li>Web programiranje</li>
+    <li>Baze podataka</li>
+    <li>Uvod u mreže</li>
+  </ul>
+`;
 
-  const diplomskiHTML = `
-    <h2>Stručni diplomski studij informacijskih tehnologija</h2>
-    <p>Traje 2 godine (4 semestra), 120 ECTS. Završetkom se stječe naziv mag.ing.inf.tech.</p>
-    <h3>Smjerovi:</h3>
-    <ul>
-      <li>Programsko inženjerstvo i informacijski sustavi</li>
-      <li>Računalni sustavi</li>
-      <li>Ugradbena i prijenosna računala</li>
-    </ul>
-    <h3>Primjeri kolegija:</h3>
-    <ul>
-      <li>Računalna sigurnost</li>
-      <li>Napredne baze podataka</li>
-      <li>Distribuirani sustavi</li>
-      <li>Diplomski rad</li>
-    </ul>
-  `;
+const diplomskiHTML = `
+  <h2>Stručni diplomski studij informacijskih tehnologija</h2>
+  <p>Traje 2 godine (4 semestra), 120 ECTS. Završetkom se stječe naziv mag.ing.inf.tech.</p>
+  <h3>Smjerovi:</h3>
+  <ul>
+    <li>Programsko inženjerstvo i informacijski sustavi</li>
+    <li>Računalni sustavi</li>
+    <li>Ugradbena i prijenosna računala</li>
+  </ul>
+  <h3>Primjeri kolegija:</h3>
+  <ul>
+    <li>Računalna sigurnost</li>
+    <li>Napredne baze podataka</li>
+    <li>Distribuirani sustavi</li>
+    <li>Diplomski rad</li>
+  </ul>
+`;
 
-  // Default - učitaj preddiplomski
+function fadeSwitch(content) {
+  if (!studyContent) return;
+  studyContent.classList.remove("visible");
+  setTimeout(() => {
+    studyContent.innerHTML = content;
+    studyContent.classList.add("visible");
+  }, 300);
+}
+
+if (toggleBtn && studyContent) {
+  let showingPreddip = true;
   studyContent.innerHTML = preddipHTML;
-
-  preddiplomskiBtn.addEventListener("click", () => {
-    studyContent.innerHTML = preddipHTML;
-    preddiplomskiBtn.classList.add("active");
-    diplomskiBtn.classList.remove("active");
-  });
-
-  diplomskiBtn.addEventListener("click", () => {
-    studyContent.innerHTML = diplomskiHTML;
-    diplomskiBtn.classList.add("active");
-    preddiplomskiBtn.classList.remove("active");
+  studyContent.classList.add("visible");
+  toggleBtn.addEventListener("click", () => {
+    showingPreddip = !showingPreddip;
+    fadeSwitch(showingPreddip ? preddipHTML : diplomskiHTML);
   });
 }
 
-// PREDMETI – klik za prikaz detalja
+// PREDMETI – klik za prikaz detalja s efektom
 document.querySelectorAll('#predmeti ul li').forEach(li => {
   li.style.cursor = 'pointer';
   li.addEventListener('click', () => {
@@ -148,7 +149,12 @@ document.querySelectorAll('#predmeti ul li').forEach(li => {
       const details = document.createElement('div');
       details.className = 'details';
       details.innerHTML = getDetailsFor(li.textContent.trim());
+      details.style.opacity = 0;
+      details.style.transition = 'opacity 0.4s ease';
       li.appendChild(details);
+      requestAnimationFrame(() => {
+        details.style.opacity = 1;
+      });
     }
   });
 });
