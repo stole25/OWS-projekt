@@ -23,11 +23,18 @@
       </ul>
     </nav>
 
-      <div class="content-box">
-        <h1>Studiji na VSITE-u</h1>
-        <button id="toggle-studij-btn">Preddiplomski / Diplomski studij</button>
-        <div id="study-content" class="fade-box"></div>
+    <div class="content-box">
+      <h1>Studiji na VSITE-u</h1>
+
+      <!-- Split gumb -->
+      <div class="study-toggle">
+        <button id="preddiplomski-toggle" class="active">Preddiplomski</button>
+        <span>/</span>
+        <button id="diplomski-toggle">Diplomski</button>
       </div>
+
+      <div id="study-content" class="fade-box visible"></div>
+    </div>
 
     <footer>
       <p>&copy; 2025 VSiTe. Sva prava pridržana.</p>

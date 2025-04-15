@@ -1,4 +1,4 @@
-// Funkcija za postavljanje veličine canvasa
+// ========== Canvas animacija ==========
 function resizeCanvas() {
   const canvas = document.getElementById("tech-animation");
   if (!canvas) return;
@@ -6,7 +6,6 @@ function resizeCanvas() {
   canvas.height = window.innerHeight;
 }
 
-// Klasa za animirane linije
 class Line {
   constructor() {
     this.reset();
@@ -69,7 +68,7 @@ window.addEventListener("resize", () => {
   initLines();
 });
 
-// Hamburger meni
+// ========== Hamburger meni ==========
 const hamburger = document.querySelector(".hamburger");
 const navLinks = document.querySelector(".nav-links");
 if (hamburger && navLinks) {
@@ -78,9 +77,10 @@ if (hamburger && navLinks) {
   });
 }
 
-// STUDIJI – jedan gumb + animacija fade između studija
-const toggleBtn = document.getElementById("toggle-studij-btn");
+// ========== STUDIJI ==========
 const studyContent = document.getElementById("study-content");
+const preddipToggle = document.getElementById("preddiplomski-toggle");
+const diplToggle = document.getElementById("diplomski-toggle");
 
 const preddipHTML = `
   <h2>Preddiplomski stručni studij informacijskih tehnologija</h2>
@@ -128,17 +128,26 @@ function fadeSwitch(content) {
   }, 300);
 }
 
-if (toggleBtn && studyContent) {
-  let showingPreddip = true;
-  studyContent.innerHTML = preddipHTML;
-  studyContent.classList.add("visible");
-  toggleBtn.addEventListener("click", () => {
-    showingPreddip = !showingPreddip;
-    fadeSwitch(showingPreddip ? preddipHTML : diplomskiHTML);
+if (preddipToggle && diplToggle && studyContent) {
+  preddipToggle.addEventListener("click", () => {
+    fadeSwitch(preddipHTML);
+    preddipToggle.classList.add("active");
+    diplToggle.classList.remove("active");
   });
+
+  diplToggle.addEventListener("click", () => {
+    fadeSwitch(diplomskiHTML);
+    diplToggle.classList.add("active");
+    preddipToggle.classList.remove("active");
+  });
+
+  // default state
+  fadeSwitch(preddipHTML);
+  preddipToggle.classList.add("active");
+  diplToggle.classList.remove("active");
 }
 
-// PREDMETI – klik za prikaz detalja s efektom
+// ========== PREDMETI - detalji ==========
 document.querySelectorAll('#predmeti ul li').forEach(li => {
   li.style.cursor = 'pointer';
   li.addEventListener('click', () => {
